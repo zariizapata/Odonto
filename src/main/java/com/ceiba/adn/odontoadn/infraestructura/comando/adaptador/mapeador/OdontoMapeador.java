@@ -3,7 +3,7 @@ package com.ceiba.adn.odontoadn.infraestructura.comando.adaptador.mapeador;
 import com.ceiba.adn.odontoadn.dominio.comando.modelo.entidad.Odonto;
 import com.ceiba.adn.odontoadn.infraestructura.comando.adaptador.entidad.OdontoEntidad;
 
-public class OdontoMapeador {
+public final class OdontoMapeador {
 
 	private OdontoMapeador() {
 	}
