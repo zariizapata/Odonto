@@ -1,8 +1,5 @@
 package com.ceiba.adn.odontoadn.dominio.comando.modelo.entidad;
 
-import java.util.Collection;
-import java.util.concurrent.ConcurrentHashMap;
-
 /**
  * @author sara.zapata
  *
