@@ -1,0 +1,1 @@
+INSERT INTO `tblcrearcitas` (`id`, `hora`, `cedula`, `nombre`, `tipo`, `estado`, `medico`, `tarifa`, `fecha`) VALUES (1, '05:45', '1035432774', 'Sara Zapata', 'Reparaciones esteticas', 'Pendiente', 'Camilo Calderon', '10000', '23/01/2020')

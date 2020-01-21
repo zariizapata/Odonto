@@ -74,13 +74,14 @@ public class OdontoEntidad implements Serializable {
 	public void setHoraAsingacionCita(String horaAsingacionCita) {
 		this.hora = horaAsingacionCita;
 	}
-	
+
 	public String getCedulaPacienite() {
 		return cedula;
 	}
 
 	public void setCedulaPacienite(String cedulaPacienite) {
 		this.cedula = cedulaPacienite;
+
 	}
 
 	public String getNombrePaciente() {
