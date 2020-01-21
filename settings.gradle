@@ -3,7 +3,4 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-jacocoTestReport {
-	reports {xml.enabled true}
-}
 rootProject.name = 'odontoadn'
