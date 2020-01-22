@@ -2,7 +2,7 @@ package com.ceiba.adn.odontoadn.dominio.puerto.repositorio;
 
 import java.util.List;
 
-import com.ceiba.adn.odontoadn.aplicacion.consulta.ConsultaListarOdonto;
+import com.ceiba.adn.odontoadn.aplicacion.consulta.ConsultaCita;
 import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
 
 public interface RepositorioCitas {
@@ -13,8 +13,8 @@ public interface RepositorioCitas {
 
 	public boolean validarDisponibilidadCita(String fecha, String hora, String medico);
 
-	public List<ConsultaListarOdonto> listarConsultaOdonto();
+	public List<ConsultaCita> listarConsultaOdonto();
 
-	public ConsultaListarOdonto buscarConsultaOdonto(Long id);
+	public ConsultaCita buscarConsultaOdonto(Long id);
 
 }

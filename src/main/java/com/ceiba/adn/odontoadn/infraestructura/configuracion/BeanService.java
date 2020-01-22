@@ -4,26 +4,26 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.ceiba.adn.odontoadn.dominio.puerto.repositorio.RepositorioCitas;
-import com.ceiba.adn.odontoadn.dominio.servicio.ServicioBuscarOdonto;
-import com.ceiba.adn.odontoadn.dominio.servicio.ServicioCrearOdonto;
-import com.ceiba.adn.odontoadn.dominio.servicio.ServicioListarOdonto;
+import com.ceiba.adn.odontoadn.dominio.servicio.ServicioBuscarCitas;
+import com.ceiba.adn.odontoadn.dominio.servicio.ServicioCrearCita;
+import com.ceiba.adn.odontoadn.dominio.servicio.ServicioListarCitas;
 
 @Configuration
 public class BeanService {
 
 	@Bean
-	public ServicioCrearOdonto servicioCrearOdonto(RepositorioCitas repositorioOdonto) {
-		return new ServicioCrearOdonto(repositorioOdonto);
+	public ServicioCrearCita servicioCrearOdonto(RepositorioCitas repositorioOdonto) {
+		return new ServicioCrearCita(repositorioOdonto);
 	}
 
 	@Bean
-	public ServicioListarOdonto servicioListarOdonto(RepositorioCitas repositorioOdonto) {
-		return new ServicioListarOdonto(repositorioOdonto);
+	public ServicioListarCitas servicioListarCita(RepositorioCitas repositorioOdonto) {
+		return new ServicioListarCitas(repositorioOdonto);
 	}
 	
 	@Bean
-	public ServicioBuscarOdonto servicioBuscarOdonto(RepositorioCitas repositorioOdonto) {
-		return new ServicioBuscarOdonto(repositorioOdonto);
+	public ServicioBuscarCitas servicioBuscarCitas(RepositorioCitas repositorioOdonto) {
+		return new ServicioBuscarCitas(repositorioOdonto);
 	}
 
 }

@@ -14,14 +14,14 @@ import org.junit.Test;
 import com.ceiba.adn.odontoadn.dominio.excepcion.ExcepcionDiasSinAtencion;
 import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
 import com.ceiba.adn.odontoadn.dominio.puerto.repositorio.RepositorioCitas;
-import com.ceiba.adn.odontoadn.dominio.servicio.ServicioCrearOdonto;
+import com.ceiba.adn.odontoadn.dominio.servicio.ServicioCrearCita;
 
 public class ServicioCrearOdontoTest {
 
 	private OdontoTest ticketBuilder;
 	private Cita odonto;
 	private RepositorioCitas parking;
-	private ServicioCrearOdonto service;
+	private ServicioCrearCita service;
 	private static final String FECHA = "17/01/2020";
 	private static final String FECHA_ERROR = "01-01-2020";
 	private static final String FECHA_DOMINGO = "19/01/2020";
@@ -64,9 +64,9 @@ public class ServicioCrearOdontoTest {
 				.conMedico(MEDICO).conNombre(NOMBRE).conEstadoCita(PENDIENTE).conTelefono(TELEFONO).conTarifa(TARIFA);
 		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
-		this.service = new ServicioCrearOdonto(this.parking);
+		this.service = new ServicioCrearCita(this.parking);
 		// act
-		Cita responseTicket = this.service.ejecutar(this.odonto);
+		Cita responseTicket = this.service.ejecutarCrearCita(this.odonto);
 		// assert
 		assertEquals(responseTicket, odontoNew);
 	}
@@ -82,12 +82,12 @@ public class ServicioCrearOdontoTest {
 				.conTelefono(TELEFONO).conTarifa(TARIFA);
 		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
-		this.service = new ServicioCrearOdonto(this.parking);
+		this.service = new ServicioCrearCita(this.parking);
 		// act
 
 		try {
 			// act
-			this.service.ejecutar(this.odonto);
+			this.service.ejecutarCrearCita(this.odonto);
 			fail();
 		} catch (ExcepcionDiasSinAtencion e) {
 			// assert
@@ -106,12 +106,12 @@ public class ServicioCrearOdontoTest {
 		;
 		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
-		this.service = new ServicioCrearOdonto(this.parking);
+		this.service = new ServicioCrearCita(this.parking);
 		// act
 
 		try {
 			// act
-			this.service.ejecutar(this.odonto);
+			this.service.ejecutarCrearCita(this.odonto);
 			fail();
 		} catch (ExcepcionDiasSinAtencion e) {
 			// assert
@@ -130,12 +130,12 @@ public class ServicioCrearOdontoTest {
 		;
 		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
-		this.service = new ServicioCrearOdonto(this.parking);
+		this.service = new ServicioCrearCita(this.parking);
 		// act
 
 		try {
 			// act
-			this.service.ejecutar(this.odonto);
+			this.service.ejecutarCrearCita(this.odonto);
 			fail();
 		} catch (ExcepcionDiasSinAtencion e) {
 			// assert
@@ -154,7 +154,7 @@ public class ServicioCrearOdontoTest {
 		;
 		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
-		this.service = new ServicioCrearOdonto(this.parking);
+		this.service = new ServicioCrearCita(this.parking);
 		assertEquals(this.service.validarJueves(FECHA_JUEVES, REPARACIONES), true);
 
 	}
@@ -169,12 +169,12 @@ public class ServicioCrearOdontoTest {
 		;
 		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
-		this.service = new ServicioCrearOdonto(this.parking);
+		this.service = new ServicioCrearCita(this.parking);
 		// act
 
 		try {
 			// act
-			this.service.ejecutar(this.odonto);
+			this.service.ejecutarCrearCita(this.odonto);
 			fail();
 		} catch (ExcepcionDiasSinAtencion e) {
 			// assert

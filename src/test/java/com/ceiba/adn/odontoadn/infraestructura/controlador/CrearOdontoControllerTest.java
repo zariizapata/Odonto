@@ -22,7 +22,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.ceiba.adn.odontoadn.ApplicationMock;
 import com.ceiba.adn.odontoadn.OdontoadnApplication;
 import com.ceiba.adn.odontoadn.dominio.comando.servicio.OdontoTest;
-import com.ceiba.adn.odontoadn.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.adn.odontoadn.dominio.excepcion.ExcepcionDisponibilidadFecha;
 import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
 
 @RunWith(SpringRunner.class)
@@ -68,7 +68,7 @@ public class CrearOdontoControllerTest {
 				.conNombre(NOMBRE).conTarifa(TARIFA).conTelefono(TELEFONO).conTipoServicio(BLANQUEAMIENTO);
 		Cita odonto = odontoTest.build();
 		JSONObject jsonTicketComman = new JSONObject(odonto);
-		String exceptionName = ExcepcionDuplicidad.class.getSimpleName();
+		String exceptionName = ExcepcionDisponibilidadFecha.class.getSimpleName();
 		Error error = new Error(exceptionName);
 		JSONObject errorJsonResponse = new JSONObject(error);
 		mvc.perform(post(URL_TICKETS).content(jsonTicketComman.toString()).contentType(MediaType.APPLICATION_JSON))

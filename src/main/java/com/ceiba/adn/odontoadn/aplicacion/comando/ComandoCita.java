@@ -1,6 +1,14 @@
-package com.ceiba.adn.odontoadn.dominio.modelo.entidad;
+package com.ceiba.adn.odontoadn.aplicacion.comando;
 
-public class Cita {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+public class ComandoCita {
+
 	private String fechaAsignacionCita;
 	private String horaAsingacionCita;
 	private String cedulaPacienite;
@@ -10,24 +18,6 @@ public class Cita {
 	private String medicoAsignado;
 	private String telefonoContacto;
 	private String tarifaCancelar;
-
-	public Cita(String fechaAsignacionCita, String horaAsingacionCita, String cedulaPacienite, String nombrePaciente,
-			String tipoServicio, String estadoCita, String medicoAsignado, String telefonoContacto,
-			String tarifaCancelar) {
-
-		this.fechaAsignacionCita = fechaAsignacionCita;
-		this.horaAsingacionCita = horaAsingacionCita;
-		this.cedulaPacienite = cedulaPacienite;
-		this.nombrePaciente = nombrePaciente;
-		this.tipoServicio = tipoServicio;
-		this.estadoCita = estadoCita;
-		this.medicoAsignado = medicoAsignado;
-		this.telefonoContacto = telefonoContacto;
-		this.tarifaCancelar = tarifaCancelar;
-	}
-
-	public Cita() {
-	}
 
 	public String getFechaAsignacionCita() {
 		return fechaAsignacionCita;
@@ -65,8 +55,8 @@ public class Cita {
 		return tarifaCancelar;
 	}
 
-	public void setFechaAsignacionCita(String date) {
-		this.fechaAsignacionCita = date;
+	public void setFechaAsignacionCita(String fechaAsignacionCita) {
+		this.fechaAsignacionCita = fechaAsignacionCita;
 	}
 
 	public void setHoraAsingacionCita(String horaAsingacionCita) {
