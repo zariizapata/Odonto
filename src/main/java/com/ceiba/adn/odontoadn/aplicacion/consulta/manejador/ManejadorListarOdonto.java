@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.adn.odontoadn.aplicacion.consulta.ConsultaListarOdonto;
-import com.ceiba.adn.odontoadn.dominio.comando.servicio.ServicioListarOdonto;
+import com.ceiba.adn.odontoadn.dominio.servicio.ServicioListarOdonto;
 
 @Component
 public class ManejadorListarOdonto {

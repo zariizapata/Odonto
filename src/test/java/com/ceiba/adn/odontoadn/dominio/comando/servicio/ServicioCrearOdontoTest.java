@@ -11,10 +11,10 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ceiba.adn.odontoadn.dominio.comando.excepcion.ExcepcionDiasSinAtencion;
-import com.ceiba.adn.odontoadn.dominio.comando.modelo.entidad.Odonto;
-import com.ceiba.adn.odontoadn.dominio.comando.puerto.repositorio.RepositorioOdonto;
-import com.ceiba.adn.odontoadn.dominio.comando.servicio.ServicioCrearOdonto;
+import com.ceiba.adn.odontoadn.dominio.excepcion.ExcepcionDiasSinAtencion;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
+import com.ceiba.adn.odontoadn.dominio.puerto.repositorio.RepositorioOdonto;
+import com.ceiba.adn.odontoadn.dominio.servicio.ServicioCrearOdonto;
 
 public class ServicioCrearOdontoTest {
 

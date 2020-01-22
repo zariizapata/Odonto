@@ -7,8 +7,8 @@ import com.ceiba.adn.odontoadn.aplicacion.comando.fabrica.FabricaOdonto;
 import com.ceiba.adn.odontoadn.aplicacion.comando.mapeador.OdontoMapeador;
 import com.ceiba.adn.odontoadn.aplicacion.comando.respuesta.ComandoRespuesta;
 import com.ceiba.adn.odontoadn.aplicacion.comando.respuesta.manejadorcomandorespuesta.ManejadorComandoRespuesta;
-import com.ceiba.adn.odontoadn.dominio.comando.modelo.entidad.Odonto;
-import com.ceiba.adn.odontoadn.dominio.comando.servicio.ServicioCrearOdonto;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
+import com.ceiba.adn.odontoadn.dominio.servicio.ServicioCrearOdonto;
 
 @Component
 public class ManejadorCrearOdonto implements ManejadorComandoRespuesta<ComandoOdonto,ComandoRespuesta<ComandoOdonto>> {

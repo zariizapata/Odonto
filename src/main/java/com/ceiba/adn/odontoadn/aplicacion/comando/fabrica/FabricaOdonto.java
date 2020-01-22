@@ -3,7 +3,7 @@ package com.ceiba.adn.odontoadn.aplicacion.comando.fabrica;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.adn.odontoadn.aplicacion.comando.ComandoOdonto;
-import com.ceiba.adn.odontoadn.dominio.comando.modelo.entidad.Odonto;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
 
 
 @Component

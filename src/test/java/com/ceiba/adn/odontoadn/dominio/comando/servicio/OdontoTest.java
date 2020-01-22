@@ -1,6 +1,6 @@
 package com.ceiba.adn.odontoadn.dominio.comando.servicio;
 
-import com.ceiba.adn.odontoadn.dominio.comando.modelo.entidad.Odonto;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
 
 public class OdontoTest {
 

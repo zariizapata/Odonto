@@ -3,7 +3,7 @@ package com.ceiba.adn.odontoadn.aplicacion.consulta.manejador;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.adn.odontoadn.aplicacion.consulta.ConsultaListarOdonto;
-import com.ceiba.adn.odontoadn.dominio.comando.servicio.ServicioBuscarOdonto;
+import com.ceiba.adn.odontoadn.dominio.servicio.ServicioBuscarOdonto;
 
 @Component
 public class ManejadorBuscarOdonto {

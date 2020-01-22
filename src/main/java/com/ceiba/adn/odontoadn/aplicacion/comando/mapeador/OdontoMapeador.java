@@ -1,7 +1,7 @@
 package com.ceiba.adn.odontoadn.aplicacion.comando.mapeador;
 
 import com.ceiba.adn.odontoadn.aplicacion.comando.ComandoOdonto;
-import com.ceiba.adn.odontoadn.dominio.comando.modelo.entidad.Odonto;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
 
 public class OdontoMapeador {
 

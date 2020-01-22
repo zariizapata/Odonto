@@ -21,9 +21,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.ceiba.adn.odontoadn.ApplicationMock;
 import com.ceiba.adn.odontoadn.OdontoadnApplication;
-import com.ceiba.adn.odontoadn.dominio.comando.excepcion.ExcepcionDuplicidad;
-import com.ceiba.adn.odontoadn.dominio.comando.modelo.entidad.Odonto;
 import com.ceiba.adn.odontoadn.dominio.comando.servicio.OdontoTest;
+import com.ceiba.adn.odontoadn.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ApplicationMock.class)

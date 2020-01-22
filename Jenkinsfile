@@ -56,7 +56,7 @@ pipeline{
 							echo '------------>test backend<------------'
 							dir("${PROJECT_PATH_BACK}"){
 								sh 'gradle --stacktrace test'
-								
+								sh 'gradle --stacktrace jacocoTestReport'
 							}
 						}
 					}
