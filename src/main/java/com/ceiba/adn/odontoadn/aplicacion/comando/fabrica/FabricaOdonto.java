@@ -3,14 +3,14 @@ package com.ceiba.adn.odontoadn.aplicacion.comando.fabrica;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.adn.odontoadn.aplicacion.comando.ComandoOdonto;
-import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
 
 
 @Component
 public class FabricaOdonto {
 
-	public Odonto crearOdonto(ComandoOdonto comandoOdonto) {
-		return new Odonto(
+	public Cita crearOdonto(ComandoOdonto comandoOdonto) {
+		return new Cita(
 				comandoOdonto.getFechaAsignacionCita(),
 				comandoOdonto.getHoraAsingacionCita(),
 				comandoOdonto.getCedulaPacienite(),

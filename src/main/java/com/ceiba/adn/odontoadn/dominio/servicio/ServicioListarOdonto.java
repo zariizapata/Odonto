@@ -3,13 +3,13 @@ package com.ceiba.adn.odontoadn.dominio.servicio;
 import java.util.List;
 
 import com.ceiba.adn.odontoadn.aplicacion.consulta.ConsultaListarOdonto;
-import com.ceiba.adn.odontoadn.dominio.puerto.repositorio.RepositorioOdonto;
+import com.ceiba.adn.odontoadn.dominio.puerto.repositorio.RepositorioCitas;
 
 public class ServicioListarOdonto {
 
-	private RepositorioOdonto repositorioOdonto;
+	private RepositorioCitas repositorioOdonto;
 
-	public ServicioListarOdonto(RepositorioOdonto repositorioOdonto) {
+	public ServicioListarOdonto(RepositorioCitas repositorioOdonto) {
 		this.repositorioOdonto = repositorioOdonto;
 	}
 

@@ -1,7 +1,7 @@
 package com.ceiba.adn.odontoadn.aplicacion.comando.mapeador;
 
 import com.ceiba.adn.odontoadn.aplicacion.comando.ComandoOdonto;
-import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
 
 public class OdontoMapeador {
 
@@ -14,7 +14,7 @@ private OdontoMapeador() {
 		return INSTANCE;
 	}
 
-	public ComandoOdonto aComando(Odonto entidad) {
+	public ComandoOdonto aComando(Cita entidad) {
 		ComandoOdonto dominio = new ComandoOdonto();
 		dominio.setFechaAsignacionCita(entidad.getFechaAsignacionCita());
 		dominio.setHoraAsingacionCita(entidad.getHoraAsingacionCita());

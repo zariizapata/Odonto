@@ -1,16 +1,16 @@
 package com.ceiba.adn.odontoadn.dominio.servicio;
 
-import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
-import com.ceiba.adn.odontoadn.dominio.puerto.repositorio.RepositorioOdonto;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
+import com.ceiba.adn.odontoadn.dominio.puerto.repositorio.RepositorioCitas;
 
 public class ServicioActualizarOdonto {
-private RepositorioOdonto repositorioOdonto;
+private RepositorioCitas repositorioOdonto;
 	
-	public ServicioActualizarOdonto(RepositorioOdonto repositorioOdonto) {
+	public ServicioActualizarOdonto(RepositorioCitas repositorioOdonto) {
 		this.repositorioOdonto = repositorioOdonto;
 	}
 	
-	public Odonto ejecutar(Odonto odonto) {
+	public Cita ejecutar(Cita odonto) {
 		return this.repositorioOdonto.crear(odonto);
 	}
 

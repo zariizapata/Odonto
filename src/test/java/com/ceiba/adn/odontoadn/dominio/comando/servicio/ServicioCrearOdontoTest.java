@@ -12,15 +12,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.ceiba.adn.odontoadn.dominio.excepcion.ExcepcionDiasSinAtencion;
-import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
-import com.ceiba.adn.odontoadn.dominio.puerto.repositorio.RepositorioOdonto;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
+import com.ceiba.adn.odontoadn.dominio.puerto.repositorio.RepositorioCitas;
 import com.ceiba.adn.odontoadn.dominio.servicio.ServicioCrearOdonto;
 
 public class ServicioCrearOdontoTest {
 
 	private OdontoTest ticketBuilder;
-	private Odonto odonto;
-	private RepositorioOdonto parking;
+	private Cita odonto;
+	private RepositorioCitas parking;
 	private ServicioCrearOdonto service;
 	private static final String FECHA = "17/01/2020";
 	private static final String FECHA_ERROR = "01-01-2020";
@@ -50,7 +50,7 @@ public class ServicioCrearOdontoTest {
 	@Before
 	public void setUp() {
 		// arrange
-		this.parking = mock(RepositorioOdonto.class);
+		this.parking = mock(RepositorioCitas.class);
 		this.today = Calendar.getInstance().getTime();
 	}
 
@@ -62,11 +62,11 @@ public class ServicioCrearOdontoTest {
 		this.odonto = this.ticketBuilder.build();
 		this.ticketBuilder = new OdontoTest().conFecha(FECHA).conCedula(CEDULA).conhora(HORA)
 				.conMedico(MEDICO).conNombre(NOMBRE).conEstadoCita(PENDIENTE).conTelefono(TELEFONO).conTarifa(TARIFA);
-		Odonto odontoNew = this.ticketBuilder.build();
+		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
 		this.service = new ServicioCrearOdonto(this.parking);
 		// act
-		Odonto responseTicket = this.service.ejecutar(this.odonto);
+		Cita responseTicket = this.service.ejecutar(this.odonto);
 		// assert
 		assertEquals(responseTicket, odontoNew);
 	}
@@ -80,7 +80,7 @@ public class ServicioCrearOdontoTest {
 		this.ticketBuilder = new OdontoTest().conFecha(FECHA_DOMINGO).conCedula(CEDULA).conhora(HORA)
 				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO).conEstadoCita(PENDIENTE)
 				.conTelefono(TELEFONO).conTarifa(TARIFA);
-		Odonto odontoNew = this.ticketBuilder.build();
+		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
 		this.service = new ServicioCrearOdonto(this.parking);
 		// act
@@ -104,7 +104,7 @@ public class ServicioCrearOdontoTest {
 		this.ticketBuilder = new OdontoTest().conFecha(FECHA_SABADO).conCedula(CEDULA).conhora(HORA)
 				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO);
 		;
-		Odonto odontoNew = this.ticketBuilder.build();
+		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
 		this.service = new ServicioCrearOdonto(this.parking);
 		// act
@@ -128,7 +128,7 @@ public class ServicioCrearOdontoTest {
 		this.ticketBuilder = new OdontoTest().conFecha(FECHA_MIERCOLES).conCedula(CEDULA).conhora(HORA)
 				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO);
 		;
-		Odonto odontoNew = this.ticketBuilder.build();
+		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
 		this.service = new ServicioCrearOdonto(this.parking);
 		// act
@@ -152,7 +152,7 @@ public class ServicioCrearOdontoTest {
 		this.ticketBuilder = new OdontoTest().conFecha(FECHA_JUEVES).conCedula(CEDULA).conhora(HORA)
 				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(REPARACIONES);
 		;
-		Odonto odontoNew = this.ticketBuilder.build();
+		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
 		this.service = new ServicioCrearOdonto(this.parking);
 		assertEquals(this.service.validarJueves(FECHA_JUEVES, REPARACIONES), true);
@@ -167,7 +167,7 @@ public class ServicioCrearOdontoTest {
 		this.ticketBuilder = new OdontoTest().conFecha(FECHA_ERROR).conCedula(CEDULA).conhora(HORA)
 				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO);
 		;
-		Odonto odontoNew = this.ticketBuilder.build();
+		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
 		this.service = new ServicioCrearOdonto(this.parking);
 		// act

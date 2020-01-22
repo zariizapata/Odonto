@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.adn.odontoadn.aplicacion.consulta.ConsultaListarOdonto;
-import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
-import com.ceiba.adn.odontoadn.dominio.puerto.repositorio.RepositorioOdonto;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
+import com.ceiba.adn.odontoadn.dominio.puerto.repositorio.RepositorioCitas;
 import com.ceiba.adn.odontoadn.infraestructura.adaptador.entidad.OdontoEntidad;
 import com.ceiba.adn.odontoadn.infraestructura.adaptador.mapeador.OdontoMapeador;
 import com.ceiba.adn.odontoadn.infraestructura.adaptador.repositorio.jpa.OdontoJpa;
 
 @Component
-public class OdontoImpl implements RepositorioOdonto {
+public class OdontoImpl implements RepositorioCitas {
 	private static final OdontoMapeador odontoMapeador = OdontoMapeador.getInstance();
 
 	private OdontoJpa odontoJpa;
@@ -22,21 +22,21 @@ public class OdontoImpl implements RepositorioOdonto {
 	}
 
 	@Override
-	public Odonto crear(Odonto odonto) {
+	public Cita crear(Cita odonto) {
 		OdontoEntidad odontoEntidad = odontoMapeador.aEntidad(odonto);
 		return odontoMapeador.aDominio(odontoJpa.save(odontoEntidad));
 
 	}
 
 	@Override
-	public boolean existe(Odonto odonto) {
+	public boolean existe(Cita odonto) {
 
 		return false;
 	}
 
 //3
 	@Override
-	public boolean validarfechar(String fecha, String hora, String medico) {
+	public boolean validarDisponibilidadCita(String fecha, String hora, String medico) {
 		return odontoJpa.validarfechasJpa(fecha, hora, medico) > 0;
 	}
 

@@ -7,7 +7,7 @@ import com.ceiba.adn.odontoadn.aplicacion.comando.fabrica.FabricaOdonto;
 import com.ceiba.adn.odontoadn.aplicacion.comando.mapeador.OdontoMapeador;
 import com.ceiba.adn.odontoadn.aplicacion.comando.respuesta.ComandoRespuesta;
 import com.ceiba.adn.odontoadn.aplicacion.comando.respuesta.manejadorcomandorespuesta.ManejadorComandoRespuesta;
-import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
 import com.ceiba.adn.odontoadn.dominio.servicio.ServicioCrearOdonto;
 
 @Component
@@ -24,7 +24,7 @@ public class ManejadorCrearOdonto implements ManejadorComandoRespuesta<ComandoOd
 	}
 	
 	public ComandoRespuesta<ComandoOdonto> ejecutar(ComandoOdonto comandoOdonto) {
-		Odonto odonto = this.fabricaOdonto.crearOdonto(comandoOdonto);
+		Cita odonto = this.fabricaOdonto.crearOdonto(comandoOdonto);
 		return new ComandoRespuesta<ComandoOdonto>(mapeador.aComando(servicioCrearOdonto.ejecutar(odonto)));
 	}
 	

@@ -8,8 +8,8 @@ import java.util.GregorianCalendar;
 
 import com.ceiba.adn.odontoadn.dominio.excepcion.ExcepcionDiasSinAtencion;
 import com.ceiba.adn.odontoadn.dominio.excepcion.ExcepcionDuplicidad;
-import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
-import com.ceiba.adn.odontoadn.dominio.puerto.repositorio.RepositorioOdonto;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
+import com.ceiba.adn.odontoadn.dominio.puerto.repositorio.RepositorioCitas;
 
 public class ServicioCrearOdonto {
 	public static final String CITA_PROGRAMADA = "El medico ya tiene una cita programada para esa fecha y hora";
@@ -20,13 +20,13 @@ public class ServicioCrearOdonto {
 	public static final String REPARACIONES = "Reparaciones esteticas";
 	public static final String PATTERN = "dd/MM/yyyy";
 
-	private RepositorioOdonto repositorioOdonto;
+	private RepositorioCitas repositorioOdonto;
 
-	public ServicioCrearOdonto(RepositorioOdonto repositorioOdonto) {
+	public ServicioCrearOdonto(RepositorioCitas repositorioOdonto) {
 		this.repositorioOdonto = repositorioOdonto;
 	}
 
-	public Odonto ejecutar(Odonto odonto) {
+	public Cita ejecutar(Cita odonto) {
 		validarFecha(odonto.getFechaAsignacionCita(), odonto.getHoraAsingacionCita(), odonto.getMedicoAsignado());
 		validarSabadoDomingo(odonto.getFechaAsignacionCita());
 		validarBlanqueamientosmiercoles(odonto.getTipoServicio(), odonto.getFechaAsignacionCita());
@@ -39,7 +39,7 @@ public class ServicioCrearOdonto {
 	}
 
 	private void validarFecha(String fecha, String hora, String medico) {
-		boolean existe = this.repositorioOdonto.validarfechar(fecha, hora, medico);
+		boolean existe = this.repositorioOdonto.validarDisponibilidadCita(fecha, hora, medico);
 		if (existe) {
 			throw new ExcepcionDuplicidad(CITA_PROGRAMADA);
 		}

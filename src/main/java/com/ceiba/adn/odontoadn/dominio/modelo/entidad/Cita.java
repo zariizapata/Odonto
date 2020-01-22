@@ -4,7 +4,7 @@ package com.ceiba.adn.odontoadn.dominio.modelo.entidad;
  * @author sara.zapata
  *
  */
-public class Odonto {
+public class Cita {
 	private String fechaAsignacionCita;
 	private String horaAsingacionCita;
 	private String cedulaPacienite;
@@ -15,7 +15,7 @@ public class Odonto {
 	private String telefonoContacto;
 	private String tarifaCancelar;
 
-	public Odonto(String fechaAsignacionCita, String horaAsingacionCita, String cedulaPacienite, String nombrePaciente,
+	public Cita(String fechaAsignacionCita, String horaAsingacionCita, String cedulaPacienite, String nombrePaciente,
 			String tipoServicio, String estadoCita, String medicoAsignado, String telefonoContacto,
 			String tarifaCancelar) {
 
@@ -30,7 +30,7 @@ public class Odonto {
 		this.tarifaCancelar = tarifaCancelar;
 	}
 
-	public Odonto() {
+	public Cita() {
 	}
 
 	public String getFechaAsignacionCita() {

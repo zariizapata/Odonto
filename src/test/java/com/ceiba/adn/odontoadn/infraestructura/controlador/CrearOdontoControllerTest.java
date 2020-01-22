@@ -23,7 +23,7 @@ import com.ceiba.adn.odontoadn.ApplicationMock;
 import com.ceiba.adn.odontoadn.OdontoadnApplication;
 import com.ceiba.adn.odontoadn.dominio.comando.servicio.OdontoTest;
 import com.ceiba.adn.odontoadn.dominio.excepcion.ExcepcionDuplicidad;
-import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ApplicationMock.class)
@@ -66,7 +66,7 @@ public class CrearOdontoControllerTest {
 		OdontoTest odontoTest = new OdontoTest();
 		odontoTest.conFecha(FECHA).conCedula(CEDULA).conEstadoCita(PENDIENTE).conhora(HORA).conMedico(MEDICO)
 				.conNombre(NOMBRE).conTarifa(TARIFA).conTelefono(TELEFONO).conTipoServicio(BLANQUEAMIENTO);
-		Odonto odonto = odontoTest.build();
+		Cita odonto = odontoTest.build();
 		JSONObject jsonTicketComman = new JSONObject(odonto);
 		String exceptionName = ExcepcionDuplicidad.class.getSimpleName();
 		Error error = new Error(exceptionName);

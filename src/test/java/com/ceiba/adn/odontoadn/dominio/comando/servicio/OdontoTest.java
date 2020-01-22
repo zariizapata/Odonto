@@ -1,6 +1,6 @@
 package com.ceiba.adn.odontoadn.dominio.comando.servicio;
 
-import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
 
 public class OdontoTest {
 
@@ -56,8 +56,8 @@ public class OdontoTest {
 		return this;
 	}
 	
-	public Odonto build() {
-		Odonto odonto = new Odonto();
+	public Cita build() {
+		Cita odonto = new Cita();
 		odonto.setFechaAsignacionCita(this.fecha);
 		odonto.setHoraAsingacionCita(this.hora);
 		odonto.setMedicoAsignado(this.medico);

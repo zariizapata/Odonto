@@ -1,6 +1,6 @@
 package com.ceiba.adn.odontoadn.infraestructura.adaptador.mapeador;
 
-import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Odonto;
+import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
 import com.ceiba.adn.odontoadn.infraestructura.adaptador.entidad.OdontoEntidad;
 
 public final class OdontoMapeador {
@@ -14,8 +14,8 @@ public final class OdontoMapeador {
 		return INSTANCE;
 	}
 
-	public Odonto aDominio(OdontoEntidad entidad) {
-		Odonto dominio = new Odonto();
+	public Cita aDominio(OdontoEntidad entidad) {
+		Cita dominio = new Cita();
 		dominio.setFechaAsignacionCita(entidad.getFechaAsignacionCita());
 		dominio.setHoraAsingacionCita(entidad.getHoraAsingacionCita());
 		dominio.setCedulaPacienite(entidad.getCedulaPacienite());
@@ -28,7 +28,7 @@ public final class OdontoMapeador {
 		return dominio;
 	}
 
-	public OdontoEntidad aEntidad(Odonto dominio) {
+	public OdontoEntidad aEntidad(Cita dominio) {
 		OdontoEntidad entidad = new OdontoEntidad();
 		entidad.setFechaAsignacionCita(dominio.getFechaAsignacionCita());
 		entidad.setHoraAsingacionCita(dominio.getHoraAsingacionCita());
