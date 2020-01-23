@@ -34,7 +34,7 @@ public class ServicioCrearOdontoTest {
 	private static final String BLANQUEAMIENTO = "Blanqueamiento";
 	private static final String FECHA_MIERCOLES = "22/01/2020";;
 	private static final String FECHA_JUEVES = "23/01/2020";
-	private static final String FECHA_ERROR = "23/15/2020";
+	private static final String FECHA_ERROR = "21-01-2020";
 	public static final String NOBLANQUEAMIENTO = "Los dias miercoles no se realizan blanqueamientos";
 	public static final String ERRORFECHA = "Error en fecha ingresada";
 	public static final String NOSABADODOMINGO = "Los dias sabado y domingo no se presta atencion";
@@ -129,6 +129,7 @@ public class ServicioCrearOdontoTest {
 		this.odonto = this.ticketBuilder.build();
 		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_MIERCOLES).conCedula(CEDULA).conhora(HORA)
 				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO);
+		;
 		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
 		this.service = new ServicioCrearCita(this.parking);
@@ -144,38 +145,22 @@ public class ServicioCrearOdontoTest {
 		}
 
 	}
-//
-//	@Test
-//	public void jueves() {
-//		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_JUEVES).conCedula(CEDULA).conhora(HORA)
-//				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(REPARACIONES);
-//		this.odonto = this.ticketBuilder.build();
-//		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_JUEVES).conCedula(CEDULA).conhora(HORA)
-//				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(REPARACIONES);
-//		Cita odontoNew = this.ticketBuilder.build();
-//		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
-//		this.service = new ServicioCrearCita(this.parking);
-//		when(this.service.ejecutarCrearCita(this.odonto)).thenReturn(odontoNew);
-//	}
 
-//	@Test
-//	public void fechaerronea() {
-//		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_ERROR).conCedula(CEDULA).conhora(HORA)
-//				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO);
-//		this.odonto = this.ticketBuilder.build();
-//		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_ERROR).conCedula(CEDULA).conhora(HORA)
-//				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO);
-//		Cita odontoNew = this.ticketBuilder.build();
-//		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
-//		this.service = new ServicioCrearCita(this.parking);
-//		try {
-//			this.service.ejecutarCrearCita(this.odonto);
-//			fail();
-//		} catch (ExcepcionDiasSinAtencion e) {
-//			assertEquals(e.getMessage(), ERRORFECHA);
-//		}
-//
-//	}
+	@Test
+	public void jueves() {
+		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_JUEVES).conCedula(CEDULA).conhora(HORA)
+				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(REPARACIONES).conEstadoCita(PENDIENTE).conTarifa(TARIFA);
+		this.odonto = this.ticketBuilder.build();
+		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_JUEVES).conCedula(CEDULA).conhora(HORA)
+				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(REPARACIONES).conEstadoCita(PENDIENTE).conTarifa(TARIFA);
+		Cita odontoNew = this.ticketBuilder.build();
+		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
+		this.service = new ServicioCrearCita(this.parking);
+		Cita responseTicket = this.service.ejecutarCrearCita(this.odonto);
+		assertEquals(responseTicket, odontoNew);
+
+	}
+
 
 	public void validarFecha() {
 		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_ERROR).conCedula(CEDULA).conhora(HORA)

@@ -62,7 +62,7 @@ public class OdontoTestCase {
 	
 	public Cita build() {
 		Cita odonto = new Cita();
-		odonto.setFechaAsignacionCita(formatofecha.formatearFechaDate(this.fecha));
+		odonto.setFechaAsignacionCita(this.formatofecha.formatearFechaDate(this.fecha));
 		odonto.setHoraAsingacionCita(this.hora);
 		odonto.setMedicoAsignado(this.medico);
 		odonto.setTarifaCancelar(this.tarifa);
