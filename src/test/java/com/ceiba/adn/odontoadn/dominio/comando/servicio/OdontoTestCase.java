@@ -1,8 +1,9 @@
 package com.ceiba.adn.odontoadn.dominio.comando.servicio;
 
 import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
+import com.ceiba.adn.odontoadn.dominio.utilidades.FormatoFecha;
 
-public class OdontoTest {
+public class OdontoTestCase {
 
 	private String fecha;
 	private String medico;
@@ -13,52 +14,55 @@ public class OdontoTest {
 	private String tiposervicio;
 	private String estadoCita;
 	private String telefono;
+	
+	FormatoFecha formatofecha;
 
-	public OdontoTest() {
+	public OdontoTestCase() {
+		this.formatofecha= new FormatoFecha();
 	}
 
-	public OdontoTest conFecha(String fecha) {
+	public OdontoTestCase conFecha(String fecha) {
 		this.fecha = fecha;
 		return this;
 	}
-	public OdontoTest conMedico(String medico) {
+	public OdontoTestCase conMedico(String medico) {
 		this.medico = medico;
 		return this;
 	}
-	public OdontoTest conhora(String hora) {
+	public OdontoTestCase conhora(String hora) {
 		this.hora = hora;
 		return this;
 	}
 	
-	public OdontoTest conNombre(String nombre) {
+	public OdontoTestCase conNombre(String nombre) {
 		this.nombre=nombre;
 		return this;
 	}
-	public OdontoTest conCedula(String cedula) {
+	public OdontoTestCase conCedula(String cedula) {
 		this.cedula=cedula;
 		return this;
 	}
-	public OdontoTest conTarifa(String tarifa) {
+	public OdontoTestCase conTarifa(String tarifa) {
 		this.tarifa=tarifa;
 		return this;
 	}
-	public OdontoTest conTipoServicio(String tiposervicio) {
+	public OdontoTestCase conTipoServicio(String tiposervicio) {
 		this.tiposervicio = tiposervicio;
 		return this;
 	}
 	
-	public OdontoTest conEstadoCita(String estadoCita) {
+	public OdontoTestCase conEstadoCita(String estadoCita) {
 		this.estadoCita = estadoCita;
 		return this;
 	}
-	public OdontoTest conTelefono(String telefono) {
+	public OdontoTestCase conTelefono(String telefono) {
 		this.telefono = telefono;
 		return this;
 	}
 	
 	public Cita build() {
 		Cita odonto = new Cita();
-		odonto.setFechaAsignacionCita(this.fecha);
+		odonto.setFechaAsignacionCita(formatofecha.formatearFechaDate(this.fecha));
 		odonto.setHoraAsingacionCita(this.hora);
 		odonto.setMedicoAsignado(this.medico);
 		odonto.setTarifaCancelar(this.tarifa);

@@ -1,10 +1,10 @@
 package com.ceiba.adn.odontoadn.aplicacion.consulta;
 
-
+import java.util.Date;
 
 public class ConsultaCita {
 	private Long id;
-	private String fecha;
+	private Date fecha;
 	private String hora;
 	private String cedula;
 	private String nombre;
@@ -14,7 +14,7 @@ public class ConsultaCita {
 	private String telefono;
 	private String tarifa;
 
-	public ConsultaCita(Long id, String fechaAsignacionCita, String horaAsingacionCita, String cedulaPacienite,
+	public ConsultaCita(Long id, Date fechaAsignacionCita, String horaAsingacionCita, String cedulaPacienite,
 			String nombrePaciente, String tipoServicio, String estadoCita, String medicoAsignado,
 			String telefonoContacto, String tarifaCancelar) {
 
@@ -39,11 +39,11 @@ public class ConsultaCita {
 		this.id = id;
 	}
 
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 

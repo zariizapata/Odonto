@@ -1,9 +1,7 @@
 package com.ceiba.adn.odontoadn.dominio.servicio;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import com.ceiba.adn.odontoadn.dominio.excepcion.ExcepcionDiasSinAtencion;
@@ -38,40 +36,25 @@ public class ServicioCrearCita {
 		return this.repositorioOdonto.crear(odonto);
 	}
 
-	private void validarFecha(String fecha, String hora, String medico) {
+	private void validarFecha(Date fecha, String hora, String medico) {
 		boolean existe = this.repositorioOdonto.validarDisponibilidadCita(fecha, hora, medico);
 		if (existe) {
 			throw new ExcepcionDisponibilidadFecha(CITA_PROGRAMADA);
 		}
 	}
 
-	private void validarSabadoDomingo(String hoy) {
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(PATTERN);
-		Date date;
-		try {
-			date = simpleDateFormat.parse(hoy);
-		} catch (ParseException e) {
-			throw new ExcepcionDiasSinAtencion(ERRORFECHA);
-		}
-
+	private void validarSabadoDomingo(Date hoy) {
 		GregorianCalendar fechaCalendario = new GregorianCalendar();
-		fechaCalendario.setTime(date);
+		fechaCalendario.setTime(hoy);
 		int diaSemana = fechaCalendario.get(Calendar.DAY_OF_WEEK);
 		if (diaSemana == Calendar.SUNDAY || diaSemana == Calendar.SATURDAY) {
 			throw new ExcepcionDiasSinAtencion(NOSABADODOMINGO);
 		}
 	}
 
-	public void validarBlanqueamientosmiercoles(String tipoServicio, String hoy) {
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(PATTERN);
-		Date date;
-		try {
-			date = simpleDateFormat.parse(hoy);
-		} catch (ParseException e) {
-			throw new ExcepcionDiasSinAtencion(ERRORFECHA);
-		}
+	public void validarBlanqueamientosmiercoles(String tipoServicio, Date hoy) {
 		GregorianCalendar fechaCalendario = new GregorianCalendar();
-		fechaCalendario.setTime(date);
+		fechaCalendario.setTime(hoy);
 		int diaSemana = fechaCalendario.get(Calendar.DAY_OF_WEEK);
 		if (diaSemana == Calendar.WEDNESDAY && tipoServicio.equals(BLANQUEAMIENTO)) {
 			throw new ExcepcionDiasSinAtencion(NOBLANQUEAMIENTO);
@@ -79,21 +62,12 @@ public class ServicioCrearCita {
 
 	}
 
-	public boolean validarJueves(String hoy,String tipoServicio) {
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(PATTERN);
-		Date date;
-		try {
-			date = simpleDateFormat.parse(hoy);
-		} catch (ParseException e) {
-			throw new ExcepcionDiasSinAtencion(ERRORFECHA);
-		}
+	public boolean validarJueves(Date hoy,String tipoServicio) {
 		GregorianCalendar fechaCalendario = new GregorianCalendar();
-		fechaCalendario.setTime(date);
+		fechaCalendario.setTime(hoy);
 		int diaSemana = fechaCalendario.get(Calendar.DAY_OF_WEEK);
-		if(diaSemana == Calendar.THURSDAY && tipoServicio.equals(REPARACIONES)) {
-			return true;
-		}
-		return false;
+		return diaSemana == Calendar.THURSDAY && tipoServicio.equals(REPARACIONES);
+		
 	}
 
 }

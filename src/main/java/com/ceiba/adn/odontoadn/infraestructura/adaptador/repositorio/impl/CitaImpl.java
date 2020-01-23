@@ -1,5 +1,6 @@
 package com.ceiba.adn.odontoadn.infraestructura.adaptador.repositorio.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -34,9 +35,8 @@ public class CitaImpl implements RepositorioCitas {
 		return false;
 	}
 
-//3
 	@Override
-	public boolean validarDisponibilidadCita(String fecha, String hora, String medico) {
+	public boolean validarDisponibilidadCita(Date fecha, String hora, String medico) {
 		return odontoJpa.validarfechasJpa(fecha, hora, medico) > 0;
 	}
 

@@ -1,7 +1,12 @@
 package com.ceiba.adn.odontoadn.dominio.modelo.entidad;
 
+import java.text.ParseException;
+import java.util.Date;
+
+import com.ceiba.adn.odontoadn.dominio.utilidades.FormatoFecha;
+
 public class Cita {
-	private String fechaAsignacionCita;
+	private Date fechaAsignacionCita;
 	private String horaAsingacionCita;
 	private String cedulaPacienite;
 	private String nombrePaciente;
@@ -11,11 +16,17 @@ public class Cita {
 	private String telefonoContacto;
 	private String tarifaCancelar;
 
+	private FormatoFecha formatoFecha;
+
+	public Cita() {
+		
+	}
+
 	public Cita(String fechaAsignacionCita, String horaAsingacionCita, String cedulaPacienite, String nombrePaciente,
 			String tipoServicio, String estadoCita, String medicoAsignado, String telefonoContacto,
 			String tarifaCancelar) {
-
-		this.fechaAsignacionCita = fechaAsignacionCita;
+		this.formatoFecha = new FormatoFecha();
+		this.fechaAsignacionCita = this.formatoFecha.formatearFechaDate(fechaAsignacionCita);
 		this.horaAsingacionCita = horaAsingacionCita;
 		this.cedulaPacienite = cedulaPacienite;
 		this.nombrePaciente = nombrePaciente;
@@ -26,10 +37,7 @@ public class Cita {
 		this.tarifaCancelar = tarifaCancelar;
 	}
 
-	public Cita() {
-	}
-
-	public String getFechaAsignacionCita() {
+	public Date getFechaAsignacionCita() {
 		return fechaAsignacionCita;
 	}
 
@@ -65,7 +73,7 @@ public class Cita {
 		return tarifaCancelar;
 	}
 
-	public void setFechaAsignacionCita(String date) {
+	public void setFechaAsignacionCita(Date date) {
 		this.fechaAsignacionCita = date;
 	}
 

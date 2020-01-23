@@ -1,6 +1,7 @@
 package com.ceiba.adn.odontoadn.infraestructura.adaptador.entidad;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,9 +25,6 @@ import lombok.Setter;
 @Table(name = "tblcrearcitas")
 public class EntidadCita implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -55,9 +55,10 @@ public class EntidadCita implements Serializable {
 
 	@Column(name = "tarifa", nullable = false)
 	private String tarifa;
-
+	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "fecha", nullable = false)
-	private String fecha;
+	private Date fecha;
 
 	public Long getId() {
 		return id;
@@ -132,11 +133,11 @@ public class EntidadCita implements Serializable {
 		this.tarifa = tarifaCancelar;
 	}
 
-	public String getFechaAsignacionCita() {
+	public Date getFechaAsignacionCita() {
 		return fecha;
 	}
 
-	public void setFechaAsignacionCita(String fechaAsignacionCita) {
+	public void setFechaAsignacionCita(Date fechaAsignacionCita) {
 		this.fecha = fechaAsignacionCita;
 	}
 
