@@ -9,9 +9,9 @@ import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
 public class FabricaCita {
 
 	public Cita crearOdonto(ComandoCita comandoCita) {
-		return new Cita(comandoCita.getFechaAsignacionCita(), comandoCita.getHoraAsingacionCita(),
+		return new Cita(comandoCita.getHoraAsingacionCita(),
 				comandoCita.getCedulaPacienite(), comandoCita.getNombrePaciente(), comandoCita.getTipoServicio(),
 				comandoCita.getEstadoCita(), comandoCita.getMedicoAsignado(), comandoCita.getTelefonoContacto(),
-				comandoCita.getTarifaCancelar());
+				comandoCita.getTarifaCancelar(), comandoCita.getFechaAsignacionCita());
 	}
 }

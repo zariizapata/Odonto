@@ -4,78 +4,62 @@ pipeline{
 		label 'Slave_Induccion'
 		}
 	
-        
-		triggers {
-        pollSCM('@hourly')
-		}
+    
 	
 		tools {
 		jdk 'JDK8_Centos' 
-		gradle 'Gradle5.0_Centos' 
+		gradle 'Gradle5.6_Centos' 
 		}
 	
-		options {
-			buildDiscarder(logRotator(numToKeepStr: '5'))
-			disableConcurrentBuilds()
-		}
-		
-		environment {
-        PROJECT_PATH_BACK = 'Odonto'
-		}
-		parameters{
-			booleanParam defaultValue: false, description: 'Push a registry AWS', name: 'pushdeploy'
-		}
-		
 		stages{
 		
 			stage('Checkout') {
 				steps {
                 echo '------------>Checkout desde Git Microservicio<------------'
-                checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'Odonto']], gitTool: 'Git_Centos', submoduleCfg: [], userRemoteConfigs: [[credentialsId: '7fe28495-6f45-4577-8c7b-dce727e78f14', url: 'https://github.com/zariizapata/Odonto.git']]])
+                checkout([
+                	$class: 'GitSCM', 
+                	branches: [[name: '*/master']], 
+                	doGenerateSubmoduleConfigurations: false, 
+                	extensions: [], 
+                	gitTool: 'Git_Centos', 
+                	submoduleCfg: [], 
+                	userRemoteConfigs: [[
+                		credentialsId: 'GitHub_zariizapata', 
+                		url: 'https://github.com/zariizapata/Odonto.git'
+                		]]
+                	])
 				}
 			}
 		
-		
-			stage('Compile'){
-				parallel {
-					stage('Compile backend'){
-						steps{
-							echo "------------>Compilaci√≥n backend<------------"
-							dir("${PROJECT_PATH_BACK}"){
-								sh 'gradle build -x test'
-							}
-						}
-					
-					}
-				}
-			}
-			stage('Test Unitarios -Cobertura'){
-				parallel {
-					stage('Test- Cobertura backend'){
-						steps {
-							echo '------------>test backend<------------'
-							dir("${PROJECT_PATH_BACK}"){
-								sh 'gradle --stacktrace test'
-								sh 'gradle --stacktrace jacocoTestReport'
-							}
-						}
-					}
-				}
-			}
-			
-			stage('Sonar Analysis'){
-				steps{
-					echo '------------>Analisis de codigo estatico<------------'
-					  withSonarQubeEnv('Sonar') {
-                     sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=./sonar-project.properties"
-                     }
-				}
-			}
-		
-		
+					stage('Build project') {
+					    steps {
+					        echo "------------>Building project<------------"
+					           sh 'gradle --b ./build.gradle clean'
+					           sh 'gradle --b ./build.gradle build'
+					       }
+					   }
+	                  stage('Compile & Unit Tests') {
+                          steps {
+                             echo "--------------->Unit Tests<--------"
+                             sh 'gradle --b ./build.gradle test'
+                             sh 'gradle --b ./build.gradle jacocoTestReport'
+                          }
+                       }
+                       stage('Static Code Analysys'){
+                          steps {
+                             echo '----------------->Analisis de CÛdigo est·tico<-----------------'
+                             withSonarQubeEnv('Sonar'){
+                                sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties -Dsonar.java.libraries=/home/ic/.gradle/caches/modules-2/files-2.1/**/*.jar"
+                             }
+                          }
+                       }
 
 		}
 		post {
+		success {
+				echo '--------success------------------'
+				junit 'build/test-results/test/*.xml'
+				}
 			failure {
 				mail(to: 'sara.zapata@ceiba.com.co',
 				body:"Build failed in Jenkins: Project: ${env.JOB_NAME} Build /n Number: ${env.BUILD_NUMBER} URL de build: ${env.BUILD_NUMBER}/n/nPlease go to ${env.BUILD_URL} and verify the build",

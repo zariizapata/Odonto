@@ -1,9 +1,6 @@
 package com.ceiba.adn.odontoadn.dominio.modelo.entidad;
 
-import java.text.ParseException;
 import java.util.Date;
-
-import com.ceiba.adn.odontoadn.dominio.utilidades.FormatoFecha;
 
 public class Cita {
 	private Date fechaAsignacionCita;
@@ -16,17 +13,14 @@ public class Cita {
 	private String telefonoContacto;
 	private String tarifaCancelar;
 
-	private FormatoFecha formatoFecha;
-
 	public Cita() {
-		
+
 	}
 
-	public Cita(String fechaAsignacionCita, String horaAsingacionCita, String cedulaPacienite, String nombrePaciente,
-			String tipoServicio, String estadoCita, String medicoAsignado, String telefonoContacto,
-			String tarifaCancelar) {
-		this.formatoFecha = new FormatoFecha();
-		this.fechaAsignacionCita = this.formatoFecha.formatearFechaDate(fechaAsignacionCita);
+	public Cita(String horaAsingacionCita, String cedulaPacienite, String nombrePaciente, String tipoServicio,
+			String estadoCita, String medicoAsignado, String telefonoContacto, String tarifaCancelar,
+			Date fechaAsignacionCita) {
+		this.fechaAsignacionCita = fechaAsignacionCita;
 		this.horaAsingacionCita = horaAsingacionCita;
 		this.cedulaPacienite = cedulaPacienite;
 		this.nombrePaciente = nombrePaciente;
@@ -41,68 +35,68 @@ public class Cita {
 		return fechaAsignacionCita;
 	}
 
+	public void setFechaAsignacionCita(Date fechaAsignacionCita) {
+		this.fechaAsignacionCita = fechaAsignacionCita;
+	}
+
 	public String getHoraAsingacionCita() {
 		return horaAsingacionCita;
-	}
-
-	public String getCedulaPacienite() {
-		return cedulaPacienite;
-	}
-
-	public String getNombrePaciente() {
-		return nombrePaciente;
-	}
-
-	public String getTipoServicio() {
-		return tipoServicio;
-	}
-
-	public String getEstadoCita() {
-		return estadoCita;
-	}
-
-	public String getMedicoAsignado() {
-		return medicoAsignado;
-	}
-
-	public String getTelefonoContacto() {
-		return telefonoContacto;
-	}
-
-	public String getTarifaCancelar() {
-		return tarifaCancelar;
-	}
-
-	public void setFechaAsignacionCita(Date date) {
-		this.fechaAsignacionCita = date;
 	}
 
 	public void setHoraAsingacionCita(String horaAsingacionCita) {
 		this.horaAsingacionCita = horaAsingacionCita;
 	}
 
+	public String getCedulaPacienite() {
+		return cedulaPacienite;
+	}
+
 	public void setCedulaPacienite(String cedulaPacienite) {
 		this.cedulaPacienite = cedulaPacienite;
+	}
+
+	public String getNombrePaciente() {
+		return nombrePaciente;
 	}
 
 	public void setNombrePaciente(String nombrePaciente) {
 		this.nombrePaciente = nombrePaciente;
 	}
 
+	public String getTipoServicio() {
+		return tipoServicio;
+	}
+
 	public void setTipoServicio(String tipoServicio) {
 		this.tipoServicio = tipoServicio;
+	}
+
+	public String getEstadoCita() {
+		return estadoCita;
 	}
 
 	public void setEstadoCita(String estadoCita) {
 		this.estadoCita = estadoCita;
 	}
 
+	public String getMedicoAsignado() {
+		return medicoAsignado;
+	}
+
 	public void setMedicoAsignado(String medicoAsignado) {
 		this.medicoAsignado = medicoAsignado;
 	}
 
+	public String getTelefonoContacto() {
+		return telefonoContacto;
+	}
+
 	public void setTelefonoContacto(String telefonoContacto) {
 		this.telefonoContacto = telefonoContacto;
+	}
+
+	public String getTarifaCancelar() {
+		return tarifaCancelar;
 	}
 
 	public void setTarifaCancelar(String tarifaCancelar) {
