@@ -13,14 +13,16 @@ import lombok.Setter;
 @Setter
 public class ComandoCita {
 
-	private String horaAsingacionCita;
-	private String cedulaPacienite;
-	private String nombrePaciente;
-	private String tipoServicio;
-	private String estadoCita;
-	private String medicoAsignado;
-	private String telefonoContacto;
-	private String tarifaCancelar;
-	private Date fechaAsignacionCita;
+	private String hora;
+	private String cedula;
+	private String nombre;
+	private String tipo;
+	private String estado;
+	private String medico;
+	private String telefono;
+	private String tarifa;
+	private Date fecha;
+
+	
 
 }
