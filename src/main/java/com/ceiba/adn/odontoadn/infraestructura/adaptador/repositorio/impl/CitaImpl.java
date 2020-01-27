@@ -49,5 +49,8 @@ public class CitaImpl implements RepositorioCitas {
 	public ConsultaCita buscarConsultaOdonto(Long id) {
 		return odontoJpa.buscarConsultaOdonto(id);
 	}
+	
+	
+
 
 }

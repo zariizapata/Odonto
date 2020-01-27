@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiOperation;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/odonto")
+@RequestMapping("/api/odontologia")
 @Api(tags = { "Controller listar citas odontologicas"})
 public class ConsultaCitasControlador {
 	

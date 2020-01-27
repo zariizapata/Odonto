@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.ceiba.adn.odontoadn.dominio.puerto.repositorio.RepositorioCitas;
+import com.ceiba.adn.odontoadn.dominio.servicio.ServicioActualizarCita;
 import com.ceiba.adn.odontoadn.dominio.servicio.ServicioBuscarCitas;
 import com.ceiba.adn.odontoadn.dominio.servicio.ServicioCrearCita;
 import com.ceiba.adn.odontoadn.dominio.servicio.ServicioListarCitas;
@@ -12,7 +13,7 @@ import com.ceiba.adn.odontoadn.dominio.servicio.ServicioListarCitas;
 public class BeanService {
 
 	@Bean
-	public ServicioCrearCita servicioCrearOdonto(RepositorioCitas repositorioOdonto) {
+	public ServicioCrearCita servicioCrearCita(RepositorioCitas repositorioOdonto) {
 		return new ServicioCrearCita(repositorioOdonto);
 	}
 
@@ -24,6 +25,10 @@ public class BeanService {
 	@Bean
 	public ServicioBuscarCitas servicioBuscarCitas(RepositorioCitas repositorioOdonto) {
 		return new ServicioBuscarCitas(repositorioOdonto);
+	}
+	@Bean
+	public ServicioActualizarCita servicioActualizarCita(RepositorioCitas repositorioOdonto) {
+		return new ServicioActualizarCita(repositorioOdonto);
 	}
 
 }

@@ -17,15 +17,15 @@ public final class MapeadorCita {
 	
 	public ComandoCita aComando(Cita entidad) {
 		ComandoCita dominio = new ComandoCita();
-		dominio.setFechaAsignacionCita(entidad.getFechaAsignacionCita());
-		dominio.setHoraAsingacionCita(entidad.getHoraAsingacionCita());
-		dominio.setCedulaPacienite(entidad.getCedulaPacienite());
-		dominio.setNombrePaciente(entidad.getNombrePaciente());
-		dominio.setTipoServicio(entidad.getTipoServicio());
-		dominio.setEstadoCita(entidad.getEstadoCita());
-		dominio.setMedicoAsignado(entidad.getMedicoAsignado());
-		dominio.setTelefonoContacto(entidad.getTelefonoContacto());
-		dominio.setTarifaCancelar(entidad.getTarifaCancelar());
+		dominio.setFecha(entidad.getFechaAsignacionCita());
+		dominio.setHora(entidad.getHoraAsingacionCita());
+		dominio.setCedula(entidad.getCedulaPacienite());
+		dominio.setNombre(entidad.getNombrePaciente());
+		dominio.setTipo(entidad.getTipoServicio());
+		dominio.setEstado(entidad.getEstadoCita());
+		dominio.setMedico(entidad.getMedicoAsignado());
+		dominio.setTelefono(entidad.getTelefonoContacto());
+		dominio.setTarifa(entidad.getTarifaCancelar());
 		return dominio;
 	}
 

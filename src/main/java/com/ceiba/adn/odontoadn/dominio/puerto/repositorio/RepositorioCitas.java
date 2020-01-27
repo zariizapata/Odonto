@@ -8,8 +8,8 @@ import com.ceiba.adn.odontoadn.dominio.modelo.entidad.Cita;
 
 public interface RepositorioCitas {
 
-	public Cita crear(Cita odonto);
-
+	public Cita crear(Cita cita);
+	
 	boolean existe(Cita odonto);
 
 	public boolean validarDisponibilidadCita(Date fecha, String hora, String medico);
