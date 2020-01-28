@@ -28,7 +28,7 @@ public class ServicioCrearCita {
 	}
 
 	public Cita ejecutarCrearCita(Cita odonto) {
-		if(vacios(odonto)) {
+		if(validarCamposVacios(odonto)) {
 			throw new ExcepcionDisponibilidadFecha(CAMPOSOBLIGATORIOS);
 		}
 		validarFecha(odonto.getFechaAsignacionCita(), odonto.getHoraAsingacionCita(), odonto.getMedicoAsignado());
@@ -77,35 +77,28 @@ public class ServicioCrearCita {
 		
 	}
 	
-	public boolean vacios(Cita odonto) {
+	public boolean validarCamposVacios(Cita odonto) {
 		Boolean validador=false;
 		if(  odonto.getCedulaPacienite() == null || odonto.getCedulaPacienite().isEmpty()) {
 			validador=true;
-			return validador;
 		}
 		if(odonto.getFechaAsignacionCita().toString().equals(VACIO) || odonto.getFechaAsignacionCita() == null) {
 			validador=true;
-			return validador;
 		}
 		if(odonto.getEstadoCita() == null || odonto.getEstadoCita().isEmpty()  ) {
 			validador=true;
-			return validador;
 		}
 		if(odonto.getHoraAsingacionCita() == null || odonto.getHoraAsingacionCita().isEmpty()) {
 			validador=true;
-			return validador;
 		}
 		if(odonto.getMedicoAsignado() == null ||  odonto.getMedicoAsignado().isEmpty()) {
 			validador=true;
-			return validador;
 		}
 		if(odonto.getTarifaCancelar() == null || odonto.getTarifaCancelar().isEmpty()) {
 			validador=true;
-			return validador;
 		}
 		if(odonto.getTipoServicio() == null || odonto.getTipoServicio().isEmpty()) {
 			validador=true;
-			return validador;
 		}
 		
 		
