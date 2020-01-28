@@ -101,10 +101,12 @@ public class ServicioCrearOdontoTest {
 	@Test
 	public void Sabado() {
 		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_SABADO).conCedula(CEDULA).conhora(HORA)
-				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO);
+				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO).conTarifa(TARIFA)
+				.conEstadoCita(PENDIENTE);
 		this.odonto = this.ticketBuilder.build();
 		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_SABADO).conCedula(CEDULA).conhora(HORA)
-				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO);
+				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO).conTarifa(TARIFA)
+				.conEstadoCita(PENDIENTE);
 		;
 		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
@@ -125,22 +127,17 @@ public class ServicioCrearOdontoTest {
 	@Test
 	public void Miercoles() {
 		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_MIERCOLES).conCedula(CEDULA).conhora(HORA)
-				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO);
+				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO).conTarifa(TARIFA).conEstadoCita(PENDIENTE);
 		this.odonto = this.ticketBuilder.build();
 		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_MIERCOLES).conCedula(CEDULA).conhora(HORA)
-				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO);
-		;
+				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(BLANQUEAMIENTO).conTarifa(TARIFA).conEstadoCita(PENDIENTE);
 		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
 		this.service = new ServicioCrearCita(this.parking);
-		// act
-
 		try {
-			// act
 			this.service.ejecutarCrearCita(this.odonto);
 			fail();
 		} catch (ExcepcionDiasSinAtencion e) {
-			// assert
 			assertEquals(e.getMessage(), NOBLANQUEAMIENTO);
 		}
 
@@ -149,10 +146,12 @@ public class ServicioCrearOdontoTest {
 	@Test
 	public void jueves() {
 		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_JUEVES).conCedula(CEDULA).conhora(HORA)
-				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(REPARACIONES).conEstadoCita(PENDIENTE).conTarifa(TARIFA);
+				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(REPARACIONES).conEstadoCita(PENDIENTE)
+				.conTarifa(TARIFA);
 		this.odonto = this.ticketBuilder.build();
 		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_JUEVES).conCedula(CEDULA).conhora(HORA)
-				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(REPARACIONES).conEstadoCita(PENDIENTE).conTarifa(TARIFA);
+				.conMedico(MEDICO).conNombre(NOMBRE).conTipoServicio(REPARACIONES).conEstadoCita(PENDIENTE)
+				.conTarifa(TARIFA);
 		Cita odontoNew = this.ticketBuilder.build();
 		when(this.parking.crear(this.odonto)).thenReturn(odontoNew);
 		this.service = new ServicioCrearCita(this.parking);
@@ -160,7 +159,6 @@ public class ServicioCrearOdontoTest {
 		assertEquals(responseTicket, odontoNew);
 
 	}
-
 
 	public void validarFecha() {
 		this.ticketBuilder = new OdontoTestCase().conFecha(FECHA_ERROR).conCedula(CEDULA).conhora(HORA)
