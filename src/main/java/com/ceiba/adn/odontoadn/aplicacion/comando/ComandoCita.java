@@ -23,6 +23,4 @@ public class ComandoCita {
 	private String tarifa;
 	private Date fecha;
 
-	
-
 }
